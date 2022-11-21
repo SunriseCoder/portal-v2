@@ -20,8 +20,15 @@ class EntityNamespaceBasedNamingStrategyTest extends TestCase
     public function dataProvider(): array
     {
         return [
+            // Namespace tests
             ['App\\Entity\\Tracker\\Event', 'tracker$events'],
             ['App\\Entity\\Tracker\\EventType', 'tracker$event_types'],
+
+            // English language grammar tests
+            ['App\\Entity\\Event', 'events'],
+            ['App\\Entity\\Type', 'types'],
+            ['App\\Entity\\Status', 'statuses'],
+            ['App\\Entity\\Story', 'stories'],
         ];
     }
 }

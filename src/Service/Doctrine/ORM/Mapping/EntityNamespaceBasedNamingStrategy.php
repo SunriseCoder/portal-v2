@@ -30,7 +30,13 @@ class EntityNamespaceBasedNamingStrategy extends UnderscoreNamingStrategy
         $tableName = str_replace('\\', '$', $tableName);
 
         // Adding 's' for Plural Name
-        $tableName .= 's';
+        if (str_ends_with($tableName, 's')) {
+            $tableName .= 'es';
+        } else if (str_ends_with($tableName, 'y')) {
+            $tableName = substr($tableName, 0, strlen($tableName) - 1) . 'ies';
+        } else {
+            $tableName .= 's';
+        }
 
         // Converting camelCase with snake_case
         $tableName = $this->underscore($tableName);
